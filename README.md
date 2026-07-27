@@ -1,5 +1,7 @@
 # Decode Roofline Audit: Batch-1 Wastes ~99.4% of Peak FLOPs
 
+> Part of **systems-perf** — my working notes on GPU/systems performance for LLM inference: roofline analysis, arithmetic intensity, and the memory-vs-compute boundary during autoregressive decode. Raw derivations and diagnostics live in [`notes/`](notes/).
+
 **Claim:** Autoregressive decode at batch 1 wastes most GPU FLOPs because it is memory-bandwidth-bound.
 
 This is a conditional audit under a dense bf16/fp16 **weight-streaming** model on an RTX 4090 running Llama 3.1 8B.
@@ -95,3 +97,9 @@ Batch 82 is the **"wastes most FLOPs" boundary** (U < 50%). Batch 164 is the **m
 ## Result
 
 Under a dense bf16/fp16 weight-streaming model on RTX 4090, the claim is **true at batch 1**: autoregressive decode has AI ≈ 1 FLOP/byte and a theoretical utilization ceiling of ≈ 0.61% of peak FLOP/s. The claim remains true in the "wastes most FLOPs" sense for batch sizes below roughly 82, and decode remains memory-bound until batch size approaches roughly 164.
+
+## Working notes
+
+- [Week 1 roofline derivations](notes/roofline-week1-derivations.md) — arithmetic intensity of large matmul, attention at seq-len 4096, and autoregressive decode at batch 1 and 256.
+- [Diagnostics redo](notes/diagnostics-redo.md) — first-pass mistakes kept for diagnosis, corrected rules, and CUDA memory-model notes (coalescing vs. latency hiding).
+- [P0 source](notes/p0-decode-roofline-audit.md) — the structured claim/sources/derivation this README was built from.
