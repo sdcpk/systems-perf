@@ -8,9 +8,9 @@ This is a conditional audit under a dense bf16/fp16 **weight-streaming** model o
 
 ## Sources
 
-1. NVIDIA lists the RTX 4090 with 24 GB GDDR6X memory; use public RTX 4090 specs for memory configuration and bandwidth.
-2. NVIDIA Ada architecture materials list RTX 4090 dense FP16 tensor throughput with FP32 accumulation as **165.2 TFLOP/s**.
-3. Meta's Llama 3.1 model card lists the Llama 3.1 collection in 8B, 70B, and 405B sizes.
+1. [NVIDIA GeForce RTX 4090 product page](https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/) — 24 GB GDDR6X memory configuration.
+2. [NVIDIA Ada GPU Architecture whitepaper (PDF)](https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf) — RTX 4090 spec table lists peak BF16/FP16 tensor throughput with FP32 accumulate as **165.2 TFLOPS** dense (330.4 with sparsity) and memory bandwidth as **1008 GB/sec**.
+3. [Meta Llama 3.1 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md) — the Llama 3.1 collection ships in 8B, 70B, and 405B sizes.
 
 ## Restated as a number
 
