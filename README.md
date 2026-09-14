@@ -1,3 +1,8 @@
+## Projects
+
+- P0: Decode Roofline Audit
+- P1: [Fused Softmax in Triton](notes/p1-fused-softmax.md)
+
 # Decode Roofline Audit: Batch-1 Wastes ~99.4% of Peak FLOPs
 
 > Part of **systems-perf** — my working notes on GPU/systems performance for LLM inference: roofline analysis, arithmetic intensity, and the memory-vs-compute boundary during autoregressive decode. Raw derivations and diagnostics live in [`notes/`](notes/).
